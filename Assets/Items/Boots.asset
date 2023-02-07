@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19991f9e7cfc264408bfd1114778c284, type: 3}
-  m_Name: Test Item
+  m_Name: Boots
   m_EditorClassIdentifier: 
   name: Boots of wisdom
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3fe216d082f18ca46b0edf4a116d4ba5, type: 3}
   isDefaultItem: 0
