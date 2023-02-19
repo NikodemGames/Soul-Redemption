@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19991f9e7cfc264408bfd1114778c284, type: 3}
-  m_Name: Shield
+  m_Script: {fileID: 11500000, guid: 18acd28193934dc4cab10aacb663c78b, type: 3}
+  m_Name: Leather Helmet 1
   m_EditorClassIdentifier: 
-  name: Shield of wisdom
-  icon: {fileID: 21300000, guid: f861b7ab59401074dbb978c2bcca2ec3, type: 3}
+  name: Leather Helmet
+  icon: {fileID: 21300000, guid: 3fe216d082f18ca46b0edf4a116d4ba5, type: 3}
   isDefaultItem: 0
+  equipSlot: 0
+  armorModifier: 1
+  damageModifier: 0
