@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    public TextMeshProUGUI playerStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,10 @@ public class PlayerStats : CharacterStats
         }
 
     }
-
+    private void Update()
+    {
+        playerStats.text = "armor: " + armor.GetValue();
+    }
     public override void Die()
     {
         base.Die();
