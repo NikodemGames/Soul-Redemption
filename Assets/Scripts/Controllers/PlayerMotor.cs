@@ -9,9 +9,11 @@ public class PlayerMotor : MonoBehaviour
     
     NavMeshAgent agent;
     Transform target;
+    Animator animator;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,10 +24,21 @@ public class PlayerMotor : MonoBehaviour
             agent.SetDestination(target.position);
             FaceTarget();
         }
+        if(agent.velocity.magnitude >0f)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+
+
     }
     public void MoveToPoint(Vector3 point)
     {
         agent.SetDestination(point);
+        
     }
 
     public void FollowTarget(Interact newTarget)

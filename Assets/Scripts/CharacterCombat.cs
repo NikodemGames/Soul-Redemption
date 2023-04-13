@@ -10,9 +10,11 @@ public class CharacterCombat : MonoBehaviour
     public float attackDelay = .6f;
     public event System.Action OnAttack;
     CharacterStats myStats;
+    Animator animator;
     private void Start()
     {
         myStats= GetComponent<CharacterStats>();
+        animator= GetComponent<Animator>();
     }
 
     private void Update()
@@ -23,6 +25,7 @@ public class CharacterCombat : MonoBehaviour
     {
         if(attackCD<=0)
         {
+            
             StartCoroutine(DoDamage(targetStats,attackDelay));
             if(OnAttack!= null)
             {
@@ -34,7 +37,9 @@ public class CharacterCombat : MonoBehaviour
     }
     IEnumerator DoDamage(CharacterStats stats, float delay)
     {
+        animator.SetBool("isAttack", true);
         yield return new WaitForSeconds(delay);
         stats.TakeDamage(myStats.damage.GetValue());
+        animator.SetBool("isAttack", false);
     }
 }

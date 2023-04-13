@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
     Camera watcher;
     PlayerMotor motor;
     public GameObject shield;
+
     void Start()
     {
         watcher = Camera.main;
         motor = GetComponent<PlayerMotor>();
+        
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour
         {
             Ray ray = watcher.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, 100, MoveMask))
+            if(Physics.Raycast(ray, out hit, 1000, MoveMask))
             {
                 motor.MoveToPoint(hit.point);
                 RemoveFocus();
@@ -40,7 +42,8 @@ public class PlayerController : MonoBehaviour
         {
             Ray ray = watcher.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+
+            if (Physics.Raycast(ray, out hit, 1000))
             {
                 Interact interact = hit.collider.GetComponent<Interact>();
                 if(interact != null)
