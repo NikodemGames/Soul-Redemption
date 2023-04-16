@@ -10,11 +10,13 @@ public class EnemyController : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     CharacterCombat combat;
+    Animator animator;
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         combat= GetComponent<CharacterCombat>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,14 @@ public class EnemyController : MonoBehaviour
                 
                 FaceTarget();
             }
+        }
+        if(agent.velocity.magnitude > 0f)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 

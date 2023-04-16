@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
 
     
-    [SerializeField] private float currentZoom = 10f;
+    [SerializeField] private float currentZoom = 6f;
     public float zoomSpeed = 60f;
     public float minZoom = 5f;
     public float maxZoom = 15f;
@@ -18,10 +18,6 @@ public class CameraController : MonoBehaviour
     public float pitch = 2;
     public float yawSpeed = 100f;
     private float yawInput = 0f;
-    void Start()
-    {
-        
-    }
 
     private void Update()
     {
