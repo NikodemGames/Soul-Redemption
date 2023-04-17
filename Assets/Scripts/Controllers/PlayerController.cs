@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             transform.Rotate(new Vector3(0, 180f, 0));
+            motor.CancelDestination();
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
