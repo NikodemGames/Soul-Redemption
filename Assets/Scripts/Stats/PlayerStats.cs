@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerStats : CharacterStats
 {
     public TextMeshProUGUI playerStats;
+
     // Start is called before the first frame update
     void Start()
     {
