@@ -5,7 +5,7 @@ public class Interact : MonoBehaviour
     public float radius = 3f;
     bool isFocus = false;
     bool hasInteracted = false;
-    public bool ranged;
+
 
 
     Transform player;
