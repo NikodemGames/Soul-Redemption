@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 180f, 0));
             motor.CancelDestination();
+            RemoveFocus();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
