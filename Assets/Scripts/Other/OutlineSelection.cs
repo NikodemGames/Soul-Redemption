@@ -18,6 +18,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,7 +27,8 @@ public class OutlineSelection : MonoBehaviour
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
-    public PlayerController playerController;
+    public GameObject detailUI;
+    public TextMeshProUGUI detailText;
 
     void Update()
     {
@@ -40,8 +42,10 @@ public class OutlineSelection : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) //Make sure you have EventSystem in the hierarchy before using EventSystem
         {
             highlight = raycastHit.transform;
-            if (highlight.GetComponent<Interact>() && highlight != selection)
+            if (highlight.GetComponent<Interact>())
             {
+                detailUI.SetActive(true);
+                detailText.text = highlight.gameObject.name;
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
@@ -57,6 +61,7 @@ public class OutlineSelection : MonoBehaviour
             else
             {
                 highlight = null;
+                detailUI.SetActive(false);
             }
         }
 
