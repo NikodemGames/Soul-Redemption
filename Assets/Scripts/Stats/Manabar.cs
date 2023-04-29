@@ -16,10 +16,6 @@ public class Manabar : MonoBehaviour
 
     private void Update()
     {
-        // Here you could add any logic to modify the mana value over time,
-        // such as natural regeneration or mana drain from other effects.
-        // For this example, we'll just update the slider to reflect the
-        // current mana value.
 
         if (manabar.value != currentMana)
         {

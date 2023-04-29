@@ -6,7 +6,7 @@ public class CharacterStats : MonoBehaviour
 {
 
     public int maxHealth = 100;
-    public int currentHealth { get; private set; }
+    public int currentHealth { get; set; }
     public Stat damage;
     public Stat armor;
     private Healthbar healthbar;
@@ -29,6 +29,7 @@ public class CharacterStats : MonoBehaviour
         {
             TakeDamage(10);
         }
+
     }
     public void TakeDamage(int damage)
     {
