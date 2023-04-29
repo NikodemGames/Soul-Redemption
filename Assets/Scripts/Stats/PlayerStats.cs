@@ -12,6 +12,7 @@ public class PlayerStats : CharacterStats
     void Start()
     {
         EquipmentManager.Instance.onEquipmentChanged += OnEquipmentChanged;
+
     }
 
     // Update is called once per frame

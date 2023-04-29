@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask MoveMask;
     Camera watcher;
     PlayerMotor motor;
-    public GameObject shield;
+    public ForceField barrier;
+
 
     void Start()
     {
@@ -58,9 +59,9 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(0, 180f, 0));
             motor.CancelDestination();
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            ForceField();
+            barrier.Cast();
         }
     }
     void SetFocus(Interact newFocus)
@@ -92,11 +93,4 @@ public class PlayerController : MonoBehaviour
         motor.StopFollowingTarget();
     }
 
-    void ForceField()
-    {
-        if(shield.GetComponent<ForceField>())
-        {
-            shield.gameObject.SetActive(true);
-        }
-    }
 }
