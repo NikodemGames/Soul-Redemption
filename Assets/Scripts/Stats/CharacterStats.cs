@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class CharacterStats : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class CharacterStats : MonoBehaviour
     public Stat damage;
     public Stat armor;
     private Healthbar healthbar;
+    private CinemachineImpulseSource impulseSource;
 
     void Awake()
     {
