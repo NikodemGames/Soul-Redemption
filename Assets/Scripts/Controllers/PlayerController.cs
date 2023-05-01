@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour
             
 
         }
+
+        
         if(!motor.inMotion)
         {
             if (Input.GetKey(KeyCode.A))
