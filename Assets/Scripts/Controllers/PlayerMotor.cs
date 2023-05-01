@@ -10,6 +10,7 @@ public class PlayerMotor : MonoBehaviour
     NavMeshAgent agent;
     Transform target;
     Animator animator;
+    public bool inMotion;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,10 +28,12 @@ public class PlayerMotor : MonoBehaviour
         if(agent.velocity.magnitude >0f)
         {
             animator.SetBool("isMoving", true);
+            inMotion = true;
         }
         else
         {
             animator.SetBool("isMoving", false);
+            inMotion = false;
         }
 
 

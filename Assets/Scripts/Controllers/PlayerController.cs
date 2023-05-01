@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     Camera watcher;
     PlayerMotor motor;
     public ForceField barrier;
+    public Fireball fireball;
+    
 
 
     void Start()
@@ -64,6 +66,23 @@ public class PlayerController : MonoBehaviour
         {
             barrier.Cast();
         }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            fireball.Cast();
+        }
+        if(focus==null&&!motor.inMotion)
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(Vector3.up, -100 * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up, 100 * Time.deltaTime);
+            }
+        }
+
+        
     }
     void SetFocus(Interact newFocus)
     {

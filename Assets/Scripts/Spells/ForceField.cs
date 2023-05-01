@@ -38,12 +38,5 @@ public class ForceField : Spell
         }
         
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            Destroy(other.gameObject);
-            gameObject.SetActive(false);
-        }
-    }
+
 }
