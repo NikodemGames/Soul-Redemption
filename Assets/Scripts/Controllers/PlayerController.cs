@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     PlayerMotor motor;
     public ForceField barrier;
     public Fireball fireball;
+    public bool isCasting=false;
     
 
 
@@ -66,11 +68,17 @@ public class PlayerController : MonoBehaviour
         {
             barrier.Cast();
         }
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.F)&& !isCasting&&focus!=null)
         {
-            fireball.Cast();
+            if(focus.gameObject.GetComponent<EnemyStats>()!=null)
+            {
+                motor.CancelDestination();
+                StartCoroutine(CastFireballWithDelay());
+            }
+            
+
         }
-        if(focus==null&&!motor.inMotion)
+        if(!motor.inMotion)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -83,6 +91,22 @@ public class PlayerController : MonoBehaviour
         }
 
         
+    }
+
+    private IEnumerator CastFireballWithDelay()
+    {
+        float distanceToFocus = Vector3.Distance(transform.position, focus.transform.position);
+        if (distanceToFocus <= 3 || distanceToFocus >15)
+        {
+            Debug.Log("Cannot cast spell while close to the focus GameObject!");
+            yield break;
+        }
+        isCasting = true;
+        motor.agent.enabled = false;
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        fireball.Cast(); // Cast the Fireball spell
+        isCasting=false;
+        motor.agent.enabled = true;
     }
     void SetFocus(Interact newFocus)
     {

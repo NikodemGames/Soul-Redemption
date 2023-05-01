@@ -7,7 +7,7 @@ public class PlayerMotor : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     Transform target;
     Animator animator;
     public bool inMotion;
