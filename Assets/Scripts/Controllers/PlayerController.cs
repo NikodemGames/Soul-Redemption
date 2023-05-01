@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     PlayerMotor motor;
     public ForceField barrier;
     public Fireball fireball;
+    public Animator animator;
     public bool isCasting=false;
     
 
@@ -102,10 +103,12 @@ public class PlayerController : MonoBehaviour
             yield break;
         }
         isCasting = true;
+        animator.SetBool("isCasting", true);
         motor.agent.enabled = false;
-        yield return new WaitForSeconds(1f); // Wait for 1 second
+        yield return new WaitForSeconds(1.2f); // Wait for 1 second
         fireball.Cast(); // Cast the Fireball spell
         isCasting=false;
+        animator.SetBool("isCasting", false);
         motor.agent.enabled = true;
     }
     void SetFocus(Interact newFocus)
