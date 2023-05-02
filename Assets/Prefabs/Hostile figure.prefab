@@ -123,6 +123,9 @@ MonoBehaviour:
     baseValue: 5
   armor:
     baseValue: 1
+  itemDropPrefab: {fileID: 100000, guid: 9e08c0b9337c73a4697bc3cd6434e664, type: 3}
+  itemDropChance: 0.1
+  agro: 0
 --- !u!114 &4892147150193690743
 MonoBehaviour:
   m_ObjectHideFlags: 0

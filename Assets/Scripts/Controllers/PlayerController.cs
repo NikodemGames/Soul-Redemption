@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = watcher.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -44,15 +44,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = watcher.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                Interact interact = hit.collider.GetComponent<Interact>();
-                if(interact != null)
+                if(hit.collider.TryGetComponent<Interact>(out var interact))
                 {
                     SetFocus(interact);
                 }
