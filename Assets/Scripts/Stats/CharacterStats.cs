@@ -36,6 +36,7 @@ public class CharacterStats : MonoBehaviour
         {
             healthbar.SetHealth(currentHealth);
         }
+
         Debug.Log(transform.name + " takes " + damage + " damage.");
 
         if (currentHealth <= 0)

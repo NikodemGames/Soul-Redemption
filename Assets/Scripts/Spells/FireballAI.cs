@@ -14,6 +14,7 @@ public class FireballAI : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyStats>(out var enemyStats))
         {
             enemyStats.TakeDamage(7);
+            enemyStats.agro = true;
             Destroy(gameObject); // Destroy the fireball game object on collision
         }
 

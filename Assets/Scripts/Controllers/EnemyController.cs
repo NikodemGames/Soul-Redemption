@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
@@ -11,19 +12,21 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     CharacterCombat combat;
     Animator animator;
+    EnemyStats stats;
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         combat= GetComponent<CharacterCombat>();
         animator = GetComponent<Animator>();
+        stats = GetComponent<EnemyStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        if (distance <= lookRadius)
+        if (distance <= lookRadius || stats.agro)
         {
             agent.SetDestination(target.position);
             if(distance <= agent.stoppingDistance)

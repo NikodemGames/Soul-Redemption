@@ -8,6 +8,7 @@ public class EnemyStats : CharacterStats
     Animator animator;
     public GameObject itemDropPrefab; // The prefab of the item to drop
     public float itemDropChance = 0.1f; // The chance of dropping the item (10%)
+    public bool agro;
     private void Start()
     {
         animator = GetComponent<Animator>();
