@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
             motor.CancelDestination();
             RemoveFocus();
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            motor.CancelDestination();
+            RemoveFocus();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             barrier.Cast();
@@ -99,7 +104,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator CastFireballWithDelay()
     {
         float distanceToFocus = Vector3.Distance(transform.position, focus.transform.position);
-        if (distanceToFocus <= 3 || distanceToFocus >15)
+        if (distanceToFocus <= 3 || distanceToFocus >20)
         {
             Debug.Log("Cannot cast spell while close to the focus GameObject!");
             yield break;

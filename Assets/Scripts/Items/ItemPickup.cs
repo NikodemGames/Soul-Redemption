@@ -18,9 +18,16 @@ public class ItemPickup : Interact
         bool wasPickedUp = Inventory.Instance.Add(item);
         if (wasPickedUp)
         {
-            //Destroy(gameObject);
-            gameObject.GetComponent<ItemPickup>().enabled = false;
-            gameObject.name = "Empty " + gameObject.name;
+            if (gameObject.CompareTag("FreeItem"))
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.GetComponent<ItemPickup>().enabled = false;
+                gameObject.name = "Empty " + gameObject.name;
+            }
+            
         }
         
     }

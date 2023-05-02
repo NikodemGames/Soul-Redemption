@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fireball : Spell
@@ -9,8 +10,10 @@ public class Fireball : Spell
     public float castSpeed = 10f;
     public int manaCost;
     public Manabar manaBar;
+
     public override void Cast()
     {
+        
         if (manaBar.currentMana >= manaCost)
         {
             GameObject fireball = Instantiate(fireballPrefab, castPoint.position, castPoint.rotation);
@@ -23,4 +26,5 @@ public class Fireball : Spell
             Debug.Log("Not enough mana to cast spell!");
         }
     }
+
 }

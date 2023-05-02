@@ -11,10 +11,10 @@ public class Usables : Item
         if(whichPotion)
         {
             Healthbar healthBar = FindObjectOfType<Healthbar>();
-            CharacterStats characterStats = FindObjectOfType<CharacterStats>();
+            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
             if (healthBar != null)
             {
-                healthBar.SetHealth(characterStats.maxHealth);
+                healthBar.SetHealth(playerStats.maxHealth);
                 RemoveFromInventory();
             }
         }
