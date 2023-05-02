@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance <= lookRadius || stats.agro)
@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void FaceTarget()
+    public void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion LookDirection = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
