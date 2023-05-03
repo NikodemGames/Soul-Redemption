@@ -46,7 +46,7 @@ public class BossController : MonoBehaviour
                 timer = 0.0f;
                 rand = Random.Range(0.0f, 1.0f);
 
-                if (rand <= 0.1f && bossStats.currentHealth <= 100 && !debugBool&&bossStats.currentHealth>0&& cooldown >=15)
+                if (rand <= 0.1f && bossStats.currentHealth <= 100 && !debugBool&&bossStats.currentHealth>0&& cooldown >=13)
                 {
                     StartCoroutine(ShowAttackRange());
                     cooldown = 0.0f;
