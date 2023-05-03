@@ -18,7 +18,6 @@ public class EnemyStats : CharacterStats
         base.Die();
         //Add ragdoll or death anim;
         animator.SetBool("isDead", true);
-
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
         gameObject.GetComponent<CharacterCombat>().enabled = false;
         gameObject.GetComponent<EnemyController>().enabled = false;

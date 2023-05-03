@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class BossController : MonoBehaviour
 {
@@ -7,15 +8,17 @@ public class BossController : MonoBehaviour
     public float attackDelay = 3.0f;
     EnemyStats bossStats;
     private float timer;
-    public bool debugBool, debugBool2;
+    bool debugBool, debugBool2;
     public GameObject attackRangeVisual;
     bool hasIncreasedDamage = false;
     bool hasIncreasedDamageAt75 = false;
     float rand;
+    Animator animator;
 
     private void Start()
     {
         bossStats = GetComponent<EnemyStats>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -48,6 +51,10 @@ public class BossController : MonoBehaviour
                 IncreaseDamage();
                 hasIncreasedDamageAt75 = true;
             }
+            if(bossStats.currentHealth <= 0)
+            {
+                this.enabled = false;
+            }
 
         }
     }
@@ -60,10 +67,14 @@ public class BossController : MonoBehaviour
     {
 
         debugBool = true;
+
         // Display attack range for 3 seconds
         Debug.DrawRay(transform.position, Vector3.forward * attackRange, Color.red, 3.0f);
         attackRangeVisual.SetActive(true); // Show the attack range sphere
-        yield return new WaitForSeconds(3.0f);
+        animator.SetBool("isAoe",true);
+        gameObject.GetComponent<CharacterCombat>().enabled=false;
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        yield return new WaitForSeconds(4f);
         attackRangeVisual.SetActive(false); // Show the attack range sphere
 
         // Damage player if they are within attack range
@@ -76,6 +87,10 @@ public class BossController : MonoBehaviour
                 {
                     player.TakeDamage(bossStats.damage.GetValue() * 2);
                 }
+                else if(bossStats.currentHealth <= 0)
+                {
+                    player.TakeDamage(bossStats.damage.GetValue() * 0);
+                }
                 else
                 {
                     player.TakeDamage(bossStats.damage.GetValue() * 3);
@@ -83,8 +98,10 @@ public class BossController : MonoBehaviour
 
             }
         }
-
+        gameObject.GetComponent<CharacterCombat>().enabled = true;
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
         debugBool = false;
+        animator.SetBool("isAoe", false);
     }
     private void OnDrawGizmosSelected()
     {

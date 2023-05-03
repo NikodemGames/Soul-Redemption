@@ -11,10 +11,12 @@ public class PlayerMotor : MonoBehaviour
     Transform target;
     Animator animator;
     public bool inMotion;
+    public AudioSource AudioSource;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -29,11 +31,13 @@ public class PlayerMotor : MonoBehaviour
         {
             animator.SetBool("isMoving", true);
             inMotion = true;
+            AudioSource.enabled = true;
         }
         else
         {
             animator.SetBool("isMoving", false);
             inMotion = false;
+            AudioSource.enabled = false;
         }
 
 

@@ -11,10 +11,12 @@ public class CharacterCombat : MonoBehaviour
     public event System.Action OnAttack;
     CharacterStats myStats;
     Animator animator;
+    public AudioSource audioSource;
     private void Start()
     {
         myStats= GetComponent<CharacterStats>();
         animator= GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -40,6 +42,11 @@ public class CharacterCombat : MonoBehaviour
         animator.SetBool("isAttack", true);
         yield return new WaitForSeconds(delay);
         stats.TakeDamage(myStats.damage.GetValue());
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+        
         animator.SetBool("isAttack", false);
     }
 }

@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     CharacterCombat combat;
     Animator animator;
     EnemyStats stats;
+    public AudioSource AudioSource;
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -44,10 +45,14 @@ public class EnemyController : MonoBehaviour
         if(agent.velocity.magnitude > 0f)
         {
             animator.SetBool("isMoving", true);
+            if(AudioSource != null)
+            AudioSource.enabled = true;
         }
         else
         {
             animator.SetBool("isMoving", false);
+            if(AudioSource != null)
+            AudioSource.enabled = false;
         }
     }
 
