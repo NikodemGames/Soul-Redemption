@@ -17,14 +17,7 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        //if (interactionTransform.gameObject.GetComponent<Enemy>())
-        //{
-        //    radius = 10f;
-        //}
-        //else
-        //{
-        //    radius = 3f;
-        //}
+
         if(isFocus && !hasInteracted)
         {
             float distance = Vector3.Distance(player.position, interactionTransform.position);

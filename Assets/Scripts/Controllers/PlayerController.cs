@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         float distanceToFocus = Vector3.Distance(transform.position, focus.transform.position);
         if (distanceToFocus <= 3 || distanceToFocus >20)
         {
-            Debug.Log("Cannot cast spell while close to the focus GameObject!");
+            Debug.Log("Cannot cast, out of range!");
             yield break;
         }
         isCasting = true;
@@ -112,8 +112,8 @@ public class PlayerController : MonoBehaviour
         motor.agent.enabled = false;
         audioSource.Play();
         fireParticles.SetActive(true);
-        yield return new WaitForSeconds(1.2f); // Wait for 1 second
-        fireball.Cast(); // Cast the Fireball spell
+        yield return new WaitForSeconds(1.2f); 
+        fireball.Cast(); 
         isCasting=false;
         animator.SetBool("isCasting", false);
         motor.agent.enabled = true;
