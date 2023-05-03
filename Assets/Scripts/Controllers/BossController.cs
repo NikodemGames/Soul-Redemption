@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using Unity.VisualScripting;
 
 public class BossController : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class BossController : MonoBehaviour
     bool hasIncreasedDamage = false;
     bool hasIncreasedDamageAt75 = false;
     float rand;
+    bool died;
     Animator animator;
+    public float cooldown;
+    public AudioSource attackSound,deathSound,explosionSound;
 
     private void Start()
     {
@@ -36,14 +40,16 @@ public class BossController : MonoBehaviour
                 debugBool2 = true;
             }
             timer += Time.deltaTime;
+            cooldown += Time.deltaTime;
             if (timer >= 1.0f)
             {
                 timer = 0.0f;
                 rand = Random.Range(0.0f, 1.0f);
 
-                if (rand <= 0.05f && bossStats.currentHealth <= 100 && !debugBool)
+                if (rand <= 0.1f && bossStats.currentHealth <= 100 && !debugBool&&bossStats.currentHealth>0&& cooldown >=15)
                 {
                     StartCoroutine(ShowAttackRange());
+                    cooldown = 0.0f;
                 }
             }
             if (bossStats.currentHealth <= 75 && !hasIncreasedDamageAt75)
@@ -51,9 +57,10 @@ public class BossController : MonoBehaviour
                 IncreaseDamage();
                 hasIncreasedDamageAt75 = true;
             }
-            if(bossStats.currentHealth <= 0)
+            if(bossStats.currentHealth <= 0&&!died)
             {
-                this.enabled = false;
+                deathSound.Play();
+                died = true;
             }
 
         }
@@ -67,7 +74,7 @@ public class BossController : MonoBehaviour
     {
 
         debugBool = true;
-
+        attackSound.Play();
         // Display attack range for 3 seconds
         Debug.DrawRay(transform.position, Vector3.forward * attackRange, Color.red, 3.0f);
         attackRangeVisual.SetActive(true); // Show the attack range sphere
@@ -98,6 +105,7 @@ public class BossController : MonoBehaviour
 
             }
         }
+        explosionSound.Play();
         gameObject.GetComponent<CharacterCombat>().enabled = true;
         gameObject.GetComponent<NavMeshAgent>().enabled = true;
         debugBool = false;

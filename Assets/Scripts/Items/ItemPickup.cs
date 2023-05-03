@@ -1,4 +1,5 @@
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class ItemPickup : Interact
 {
@@ -18,6 +19,7 @@ public class ItemPickup : Interact
         bool wasPickedUp = Inventory.Instance.Add(item);
         if (wasPickedUp)
         {
+            gameObject.GetComponent<AudioSource>().Play();
             if (gameObject.CompareTag("FreeItem"))
             {
                 Destroy(gameObject);

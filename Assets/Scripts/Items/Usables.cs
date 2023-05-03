@@ -5,9 +5,11 @@ using UnityEngine;
 public class Usables : Item
 {
     public bool whichPotion;
+
     public override void Use()
     {
         base.Use();
+
         if(whichPotion)
         {
             Healthbar healthBar = FindObjectOfType<Healthbar>();
