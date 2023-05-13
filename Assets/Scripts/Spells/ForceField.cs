@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ForceField : Spell
@@ -17,7 +18,7 @@ public class ForceField : Spell
         }
         else
         {
-            Debug.Log("Not enough mana to cast spell!");
+            EnableLog("Not enough mana!");
         }
     }
     void Update()

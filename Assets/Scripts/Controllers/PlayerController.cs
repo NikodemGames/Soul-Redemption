@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         float distanceToFocus = Vector3.Distance(transform.position, focus.transform.position);
         if (distanceToFocus <= 3 || distanceToFocus >20)
         {
-            Debug.Log("Cannot cast, out of range!");
+            fireball.EnableLog("Out of range!");
             yield break;
         }
         isCasting = true;

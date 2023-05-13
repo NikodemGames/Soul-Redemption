@@ -20,7 +20,7 @@ public class Fireball : Spell
         }
         else
         {
-            Debug.Log("Not enough mana to cast spell!");
+            EnableLog("Not enough mana!");
         }
     }
 
