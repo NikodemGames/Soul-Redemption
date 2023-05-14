@@ -16,10 +16,15 @@ public class ForceField : Spell
             manaBar.currentMana -= manaCost;
             playerStats.armor.AddModifier(5);
         }
-        else
+        else if(manaBar.currentMana< manaCost)
         {
             EnableLog("Not enough mana!");
         }
+        else if (countdownTime<3)
+        {
+            EnableLog("Spell is not ready yet!");
+        }
+        
     }
     void Update()
     {
