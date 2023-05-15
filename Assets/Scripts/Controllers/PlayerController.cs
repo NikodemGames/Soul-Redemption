@@ -68,23 +68,24 @@ public class PlayerController : MonoBehaviour
             motor.CancelDestination();
             RemoveFocus();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             barrier.Cast();
         }
-        if(Input.GetKeyDown(KeyCode.F)&& !isCasting&&focus!=null)
+        if(Input.GetKeyDown(KeyCode.F)&& !isCasting)
         {
-            if(focus.gameObject.GetComponent<EnemyStats>()!=null)
+            if (focus == null||focus.gameObject.GetComponent<EnemyStats>()==null) fireball.EnableLog("No target!");
+            else
             {
                 motor.CancelDestination();
                 StartCoroutine(CastFireballWithDelay());
             }
-            
 
         }
 
-        
-        if(!motor.inMotion)
+
+
+        if (!motor.inMotion)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
         float distanceToFocus = Vector3.Distance(transform.position, focus.transform.position);
         if (distanceToFocus <= 3 || distanceToFocus >20)
         {
-            fireball.EnableLog("Out of range!");
+            fireball.EnableLog("Not in range!");
             yield break;
         }
         isCasting = true;

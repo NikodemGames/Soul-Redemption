@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mana Potion
   m_EditorClassIdentifier: 
   name: Mana Potion
-  icon: {fileID: 21300000, guid: 8a6cca56e2b63344eb4769cd92d93ffb, type: 3}
+  icon: {fileID: 21300000, guid: 6fe4c2a9ac2165b449752dd9bb5d7e25, type: 3}
   isDefaultItem: 0
   whichPotion: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Leather Helmet 1
   m_EditorClassIdentifier: 
   name: Leather Helmet
-  icon: {fileID: 21300000, guid: 3fe216d082f18ca46b0edf4a116d4ba5, type: 3}
+  icon: {fileID: 21300000, guid: 05ba3d13174025946af9260395b93910, type: 3}
   isDefaultItem: 0
   equipSlot: 0
   armorModifier: 1

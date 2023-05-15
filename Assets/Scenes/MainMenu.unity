@@ -4976,21 +4976,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Left click - MOVE
+  m_text: 'Left click(ON FLOOR) - MOVE
 
     Right click - INTERACT/ATTACK ENEMY
 
-    F - FIREBALL
-    (WHEN INTERACTING WITH ENEMY FROM DISTANCE)
+    F
+    - FIREBALL(WHEN FOCUSING ENEMY)
 
-    SPACEBAR - BARRIER
+    G - BARRIER
 
-    Q -
-    QUICK TURN AROUND
+    Q - QUICK TURN AROUND
 
-    S - STOP ALL ACTIONS
+    S
+    - STOP ALL ACTIONS
 
-    I - HIDE INVENTORY'
+    I - HIDE INVENTORY
+
+    C - PLAYER STATS WINDOW'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

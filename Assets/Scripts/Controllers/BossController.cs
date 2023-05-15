@@ -36,7 +36,9 @@ public class BossController : MonoBehaviour
             if (bossStats.currentHealth <= 100 && !debugBool && !debugBool2)
             {
                 StartCoroutine(ShowAttackRange());
+                cooldown = 0;
                 debugBool2 = true;
+
             }
             timer += Time.deltaTime;
             cooldown += Time.deltaTime;
@@ -110,10 +112,5 @@ public class BossController : MonoBehaviour
         debugBool = false;
         animator.SetBool("isAoe", false);
     }
-    private void OnDrawGizmosSelected()
-    {
-        // Draw wire sphere to represent the attack range
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
+
 }
