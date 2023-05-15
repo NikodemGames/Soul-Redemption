@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     {
         if(!item.isDefaultItem)
         {
-            if(items.Count >= 20)
+            if(items.Count >= 6)
             {
                 Debug.Log("Inventory Full, not enough space!");
                 return false;
